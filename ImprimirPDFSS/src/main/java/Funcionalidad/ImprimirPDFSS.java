@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * @author Wilber
  */
-public class ImprimirPDFSS implements IImprimirPDFSS{
+public class ImprimirPDFSS implements IImprimirPDFSS {
 
     IObjetoNegocioTransferencia imprimirPDF;
 
@@ -24,7 +24,8 @@ public class ImprimirPDFSS implements IImprimirPDFSS{
 
     @Override
     public ByteArrayOutputStream imprimirPDF(TarjetaDTO tarjetaDTO, Date fechaInicio, Date fechaFin, boolean ingresos, boolean egresos) {
-        return imprimirPDF.imprimirPDF(tarjetaDTO, fechaInicio, fechaFin, ingresos, egresos);
+//        return imprimirPDF.imprimirPDF(tarjetaDTO, fechaInicio, fechaFin, ingresos, egresos);
+        return null;
     }
 
 }
