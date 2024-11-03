@@ -31,6 +31,13 @@ public class TransferenciaSS implements ITransferenciaSS{
        this.tarjeta = new ObjetoNegocioTarjeta();
         
     }
+
+    public TransferenciaSS(IObjetoNegocioTransferencia transferencia, IObjetoNegocioPersona persona, IObjetoNegocioTarjeta tarjeta) {
+        this.transferencia = transferencia;
+        this.persona = persona;
+        this.tarjeta = tarjeta;
+    }
+    
     
   
     @Override

@@ -18,6 +18,11 @@ public class TarjetaSS implements ITarjetaSS {
 
     IObjetoNegocioTarjeta tarjeta;
 
+    public TarjetaSS(IObjetoNegocioTarjeta tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
+    
     public TarjetaSS() {
         tarjeta = new ObjetoNegocioTarjeta();
     }
