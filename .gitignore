@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 /BankoNegocio/nbproject/
 /MovimientosTransferenciasSS/target/
@@ -15,3 +16,7 @@
 /TransferenciaSS/nbproject/
 /EncriptadorSS/nbproject/
 /DesencriptadorSS/nbproject/
+=======
+/BankoPresentacion/nbproject/
+/BankoPersistencia/nbproject/
+>>>>>>> Stashed changes

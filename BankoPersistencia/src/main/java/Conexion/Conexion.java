@@ -17,14 +17,14 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  * @author Héctor Francisco Báez Luque
  * @author Diego Alcantar Acosta
  */
-public class Conexion{
+public class Conexion {
 
-   private static MongoClient mongoClient = null;
+    private static MongoClient mongoClient = null;
     //Si se conectaron por Atlas su URL es la que les proporciona la página
     private static final String URI = "mongodb://localhost:27017";
     private static final String DATABASE_NAME = "BANKO";
 
-    private Conexion() {
+    public Conexion() {
         // Constructor privado para prevenir instanciación 
     }
 
@@ -51,12 +51,11 @@ public class Conexion{
         // si no es null, la regresamos nuevamente
         return mongoClient.getDatabase(DATABASE_NAME);
     }
-
+    
     public static void close() {
         if (mongoClient != null) {
             mongoClient.close();
             mongoClient = null;
         }
     }
-    }
-
+}

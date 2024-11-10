@@ -8,6 +8,7 @@ import Conexion.Conexion;
 import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
@@ -29,9 +30,14 @@ public class ContactoDAO implements IContactoDAO {
 
     MongoCollection<Contacto> coleccionPersonas;
     private Encriptador enc = new Encriptador();
-
+    
+    
     public ContactoDAO() {
         this.coleccionPersonas = Conexion.getDatabase().getCollection("Personas", Contacto.class);
+    }
+    
+    public ContactoDAO(MongoCollection conexion) {
+        this.coleccionPersonas = conexion;
     }
 
     @Override
@@ -59,8 +65,8 @@ public class ContactoDAO implements IContactoDAO {
                 Bson filtro = Filters.and(Filters.eq("_id", persona.getId()), Filters.eq("listaContactos.alias", contacto.getAlias()));
                 Bson update = Updates.pull("listaContactos", Filters.eq("alias", contacto.getAlias()));
                 UpdateResult result = coleccionPersonas.updateOne(filtro, update);
-
-                return result.getModifiedCount() > 0;
+ 
+                return result.getModifiedCount()> 0;
             }
             throw new MongoException("No se logro eliminar el contacto");
         } catch (MongoException e) {
@@ -134,6 +140,10 @@ public class ContactoDAO implements IContactoDAO {
         }
 
         return false;
+    }
+
+    public void setColeccionPersonas(MongoCollection<Contacto> coleccionPersonas) {
+        this.coleccionPersonas = coleccionPersonas;
     }
 
 }
