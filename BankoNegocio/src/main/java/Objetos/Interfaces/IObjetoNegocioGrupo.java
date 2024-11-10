@@ -7,6 +7,7 @@ package Objetos.Interfaces;
 import DTOs.ContactoDTO;
 import DTOs.GrupoDTO;
 import DTOs.MiembroGrupoDTO;
+import entidades.Grupo;
 import org.bson.types.ObjectId;
 
 /**
@@ -23,5 +24,7 @@ public interface IObjetoNegocioGrupo {
 
     
     Boolean agregarContacto(ContactoDTO contactoDTO, String idGrupo); // Agregar este método
+    public Grupo convertirDTOAEntidad(GrupoDTO grupoDTO);
+    public GrupoDTO convertirEntidadADTO(Grupo grupo);
 
 }

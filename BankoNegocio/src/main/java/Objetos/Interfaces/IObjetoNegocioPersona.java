@@ -55,4 +55,8 @@ public interface IObjetoNegocioPersona {
      * @return boolean
      */
     public Boolean insertMasivo();
+    public Persona convertirDTOAEntidad(PersonaDTO personaDTO);
+     public Persona convertirDTOAEntidadCURP(PersonaDTO personaDTO);
+     public PersonaDTO convertirEntidadADTOCURP(Persona persona);
+     public PersonaDTO convertirEntidadADTO(Persona persona);
 }

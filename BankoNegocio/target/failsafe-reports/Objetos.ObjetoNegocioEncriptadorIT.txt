@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: Objetos.ObjetoNegocioContactoIT
+Test set: Objetos.ObjetoNegocioEncriptadorIT
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.811 s -- in Objetos.ObjetoNegocioContactoIT
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.149 s -- in Objetos.ObjetoNegocioEncriptadorIT

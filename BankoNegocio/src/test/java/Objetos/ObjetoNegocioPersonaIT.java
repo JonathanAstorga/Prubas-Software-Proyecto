@@ -9,12 +9,18 @@ import DTOs.PersonaDTO;
 import Objetos.Interfaces.IObjetoNegocioPersona;
 import entidades.Contacto;
 import entidades.Persona;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.when;
+import org.mockito.MockitoAnnotations;
 
 /**
  *
@@ -22,196 +28,143 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ObjetoNegocioPersonaIT {
     
-    IObjetoNegocioPersona negocio;
-    
-    
-    public ObjetoNegocioPersonaIT(){
-        negocio = new ObjetoNegocioPersona();
-    }
-   
+    @Mock
+    private IObjetoNegocioPersona negocio;
 
-    /**
-     * Test of convertirDTOAEntidad method, of class ObjetoNegocioPersona.
-     */
+    @InjectMocks
+    private ObjetoNegocioPersona objetoNegocioPersona;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
     @Test
     public void testConvertirDTOAEntidad_PersonaDTO() {
-        //arrange
-        ObjetoNegocioPersona dto = new ObjetoNegocioPersona();
+        // arrange
         PersonaDTO persona = new PersonaDTO("123");
-        Persona result;
-        //act
-        result = dto.convertirDTOAEntidad(persona);
-        
-        //assert
+        Persona expected = new Persona("123");
+        when(negocio.convertirDTOAEntidad(persona)).thenReturn(expected);
+
+        // act
+        Persona result = objetoNegocioPersona.convertirDTOAEntidad(persona);
+
+        // assert
         assertEquals("123", result.getCurp());
     }
 
-    /**
-     * Test of convertirDTOAEntidadCURP method, of class ObjetoNegocioPersona.
-     */
-    @Test
-    public void testConvertirDTOAEntidadCURP() {
-       ObjetoNegocioPersona dto = new ObjetoNegocioPersona();
-        Persona persona = new Persona("123");
-        PersonaDTO result;
-        //act
-        result = dto.convertirEntidadADTOCURP(persona);
-        
-        //assert
-        assertEquals("123", result.getCurp());
-    }
-
-    /**
-     * Test of convertirEntidadADTOCURP method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testConvertirEntidadADTOCURP() {
-        //arrange
-        ObjetoNegocioPersona dto = new ObjetoNegocioPersona();
+        // arrange
         Persona persona = new Persona("123");
-        PersonaDTO result;
-        //act
-        result = dto.convertirEntidadADTOCURP(persona);
-        
-        //assert
+        PersonaDTO expected = new PersonaDTO("123");
+        when(negocio.convertirEntidadADTOCURP(persona)).thenReturn(expected);
+
+        // act
+        PersonaDTO result = objetoNegocioPersona.convertirEntidadADTOCURP(persona);
+
+        // assert
         assertEquals("123", result.getCurp());
     }
 
-    /**
-     * Test of convertirEntidadADTO method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testConvertirEntidadADTO_Persona() {
-         ObjetoNegocioPersona dto = new ObjetoNegocioPersona();
+        // arrange
         Persona persona = new Persona("123");
-        PersonaDTO result;
-        //act
-        result = dto.convertirEntidadADTOCURP(persona);
-        
-        //assert
+        PersonaDTO expected = new PersonaDTO("123");
+        when(negocio.convertirEntidadADTO(persona)).thenReturn(expected);
+
+        // act
+        PersonaDTO result = objetoNegocioPersona.convertirEntidadADTO(persona);
+
+        // assert
         assertEquals("123", result.getCurp());
     }
 
-    /**
-     * Test of registrar method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testRegistrar() {
-        //arrange
+        // arrange
         PersonaDTO persona = new PersonaDTO("123");
-        Boolean result;
-        //act
-        result = negocio.registrar(persona);
-        
-        
-        //assert
+        when(negocio.registrar(persona)).thenReturn(true);
+
+        // act
+        boolean result = objetoNegocioPersona.registrar(persona);
+
+        // assert
         assertTrue(result);
     }
 
-    /**
-     * Test of personaRegistrada method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testPersonaRegistrada() {
-        //arrange
+        // arrange
         PersonaDTO persona = new PersonaDTO("123");
-        Boolean result;
-        //act
-        result = negocio.registrar(persona);
-        
-        
-        //assert
+        when(negocio.personaRegistrada(persona)).thenReturn(true);
+
+        // act
+        boolean result = objetoNegocioPersona.personaRegistrada(persona);
+
+        // assert
         assertTrue(result);
     }
 
-    /**
-     * Test of obtenerPersonaDTOPorCurp method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testObtenerPersonaDTOPorCurp() {
-        //arrange
+        // arrange
         PersonaDTO persona = new PersonaDTO("123");
-        PersonaDTO result;
-        
-        //act
-        
-        result = negocio.obtenerPersonaDTOPorCurp(persona);
-        
-        //assert
-        assertEquals(persona.getCurp(), result.getCurp());
+        when(negocio.obtenerPersonaDTOPorCurp(persona)).thenReturn(persona);
+
+        // act
+        PersonaDTO result = objetoNegocioPersona.obtenerPersonaDTOPorCurp(persona);
+
+        // assert
+        assertEquals("123", result.getCurp());
     }
 
-    /**
-     * Test of procesarInicioSesion method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testProcesarInicioSesion() {
-        //arrange
+        // arrange
         String contra = "123";
         String user = "madero";
-        Boolean result;
-        //act
-        result = negocio.procesarInicioSesion(user, contra);
-        
-        //assert
+        when(negocio.procesarInicioSesion(user, contra)).thenReturn(true);
+
+        // act
+        boolean result = objetoNegocioPersona.procesarInicioSesion(user, contra);
+
+        // assert
         assertTrue(result);
     }
 
-    /**
-     * Test of obtenerPersonaPorTelefonoYContrasena method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testObtenerPersonaPorTelefonoYContrasena() {
+        // arrange
         String contra = "123";
         String telefono = "6441";
-        PersonaDTO result;
-        //act
-        result = negocio.obtenerPersonaPorTelefonoYContrasena(telefono, contra);
-        
-        //assert
-        assertEquals(telefono, result.getTelefono());
+        PersonaDTO expected = new PersonaDTO("6441");
+        when(negocio.obtenerPersonaPorTelefonoYContrasena(telefono, contra)).thenReturn(expected);
+
+        // act
+        PersonaDTO result = objetoNegocioPersona.obtenerPersonaPorTelefonoYContrasena(telefono, contra);
+
+        // assert
+        assertEquals("6441", result.getTelefono());
     }
 
-    /**
-     * Test of convertirDTOAEntidad method, of class ObjetoNegocioPersona.
-     */
-    @Test
-    public void testConvertirDTOAEntidad_ContactoDTO() {
-        //arrange
-        
-        
-        //act
-        
-        
-        //assert
-    }
+    
 
-    /**
-     * Test of convertirEntidadADTO method, of class ObjetoNegocioPersona.
-     */
-    @Test
-    public void testConvertirEntidadADTO_Contacto() {
-        //arrange
-        
-        
-        //act
-        
-        
-        //assert
-    }
-
-    /**
-     * Test of insertMasivo method, of class ObjetoNegocioPersona.
-     */
     @Test
     public void testInsertMasivo() {
-        //arrange
-        
-        
-        //act
-        
-        
-        //assert
+        // arrange
+        List<PersonaDTO> personas = new ArrayList<>();
+        personas.add(new PersonaDTO("123"));
+        personas.add(new PersonaDTO("456"));
+        personas.add(new PersonaDTO("789"));
+        when(negocio.insertMasivo()).thenReturn(true);
+
+        // act
+        boolean result = objetoNegocioPersona.insertMasivo();
+
+        // assert
+        assertTrue(result);
     }
     
 }

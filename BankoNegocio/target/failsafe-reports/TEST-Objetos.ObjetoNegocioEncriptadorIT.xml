@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" version="3.0.2" name="Objetos.ObjetoNegocioContactoIT" time="0.811" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" version="3.0.2" name="Objetos.ObjetoNegocioEncriptadorIT" time="0.149" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\jl4ma\AppData\Local\Temp\surefire1458093465122089481\surefirebooter-20241109201206467_3.jar C:\Users\jl4ma\AppData\Local\Temp\surefire1458093465122089481 2024-11-09T20-12-06_350-jvmRun1 surefire-20241109201206467_1tmp surefire_0-20241109201206467_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\jl4ma\AppData\Local\Temp\surefire7279319594213719719\surefirebooter-20241109201415175_3.jar C:\Users\jl4ma\AppData\Local\Temp\surefire7279319594213719719 2024-11-09T20-14-15_067-jvmRun1 surefire-20241109201415175_1tmp surefire_0-20241109201415175_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="DummyToSkipUnitTests"/>
     <property name="surefire.test.class.path" value="C:\Users\jl4ma\OneDrive\Documentos\GitHub\Prubas-Software-Proyecto\BankoNegocio\target\test-classes;C:\Users\jl4ma\OneDrive\Documentos\GitHub\Prubas-Software-Proyecto\BankoNegocio\target\BankoNegocio-1.0-SNAPSHOT.jar;C:\Users\jl4ma\.m2\repository\com\mycompany\BankoDTOs\1.0-SNAPSHOT\BankoDTOs-1.0-SNAPSHOT.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\mongo-java-driver\3.10.1\mongo-java-driver-3.10.1.jar;C:\Users\jl4ma\.m2\repository\com\mycompany\BankoPersistencia\1.0-SNAPSHOT\BankoPersistencia-1.0-SNAPSHOT.jar;C:\Users\jl4ma\.m2\repository\com\itextpdf\itext-pdfa\5.5.13.3\itext-pdfa-5.5.13.3.jar;C:\Users\jl4ma\.m2\repository\com\itextpdf\itextpdf\5.5.13.1\itextpdf-5.5.13.1.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\mongodb-driver-sync\4.0.1\mongodb-driver-sync-4.0.1.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\bson\4.0.1\bson-4.0.1.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\mongodb-driver-core\4.0.1\mongodb-driver-core-4.0.1.jar;C:\Users\jl4ma\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\jl4ma\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\jl4ma\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;C:\Users\jl4ma\.m2\repository\org\mockito\mockito-core\5.4.0\mockito-core-5.4.0.jar;C:\Users\jl4ma\.m2\repository\net\bytebuddy\byte-buddy\1.14.5\byte-buddy-1.14.5.jar;C:\Users\jl4ma\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.5\byte-buddy-agent-1.14.5.jar;C:\Users\jl4ma\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\jl4ma\AppData\Local\Temp\surefire1458093465122089481\surefirebooter-20241109201206467_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\jl4ma\AppData\Local\Temp\surefire7279319594213719719\surefirebooter-20241109201415175_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.4+8-LTS-274"/>
@@ -51,7 +51,7 @@
     <property name="user.dir" value="C:\Users\jl4ma\OneDrive\Documentos\GitHub\Prubas-Software-Proyecto\BankoNegocio"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="it.test" value="Objetos.ObjetoNegocioContactoIT"/>
+    <property name="it.test" value="Objetos.ObjetoNegocioEncriptadorIT#testGetAESDecrypt"/>
     <property name="failIfNoTests" value="false"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
@@ -63,17 +63,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testConvertirDTOAEntidad" classname="Objetos.ObjetoNegocioContactoIT" time="0.771">
-    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\jl4ma\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.5\byte-buddy-agent-1.14.5.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
-  </testcase>
-  <testcase name="testActualizar" classname="Objetos.ObjetoNegocioContactoIT" time="0.006"/>
-  <testcase name="testAgregar" classname="Objetos.ObjetoNegocioContactoIT" time="0.004"/>
-  <testcase name="testObtenerContactosDTOPersona" classname="Objetos.ObjetoNegocioContactoIT" time="0.003"/>
-  <testcase name="testConvertirEntidadADTO" classname="Objetos.ObjetoNegocioContactoIT" time="0.003"/>
-  <testcase name="testEliminar" classname="Objetos.ObjetoNegocioContactoIT" time="0.002"/>
-  <testcase name="testObtenerContactoDTOPersona" classname="Objetos.ObjetoNegocioContactoIT" time="0.003"/>
+  <testcase name="testGetAESDecrypt" classname="Objetos.ObjetoNegocioEncriptadorIT" time="0.017"/>
 </testsuite>

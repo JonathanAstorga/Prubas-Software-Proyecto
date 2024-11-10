@@ -38,6 +38,7 @@ public class ObjetoNegocioGrupo implements IObjetoNegocioGrupo {
   
 
 
+    @Override
     public Grupo convertirDTOAEntidad(GrupoDTO grupoDTO) {
         Grupo grupo = new Grupo(grupoDTO.getNombre(), grupoDTO.getSaldo(), grupoDTO.getMotivo());
 
@@ -56,6 +57,7 @@ public class ObjetoNegocioGrupo implements IObjetoNegocioGrupo {
         return grupo;
     }
 
+    @Override
     public GrupoDTO convertirEntidadADTO(Grupo grupo) {
         if (grupo != null) {
             GrupoDTO grupoDTO = new GrupoDTO();

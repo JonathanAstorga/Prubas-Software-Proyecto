@@ -43,6 +43,7 @@ public class ObjetoNegocioContacto implements IObjetoNegocioContacto {
      * @param contactoDTO contactoDTO
      * @return contacto entidad
      */
+    @Override
     public Contacto convertirDTOAEntidad(ContactoDTO contactoDTO) {
         if (contactoDTO.getBanco() != null) {
             Contacto contacto = new Contacto();
@@ -94,6 +95,7 @@ public class ObjetoNegocioContacto implements IObjetoNegocioContacto {
      * @param contacto contacto entidad
      * @return contactoDTO
      */
+    @Override
     public ContactoDTO convertirEntidadADTO(Contacto contacto) {
         if (contacto.getBanco() != null) {
             ContactoDTO contactoDTO = new ContactoDTO();

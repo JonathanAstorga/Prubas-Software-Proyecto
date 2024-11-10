@@ -48,6 +48,7 @@ public class ObjetoNegocioPersona implements IObjetoNegocioPersona {
      * @param personaDTO persona
      * @return  persona
      */
+    @Override
     public Persona convertirDTOAEntidad(PersonaDTO personaDTO) {
         ObjetoNegocioTarjeta ont = new ObjetoNegocioTarjeta();
 
@@ -93,6 +94,7 @@ public class ObjetoNegocioPersona implements IObjetoNegocioPersona {
      * @param personaDTO personaDTO
      * @return  persona
      */
+    @Override
     public Persona convertirDTOAEntidadCURP(PersonaDTO personaDTO) {
         Persona persona = new Persona();
         persona.setCurp(personaDTO.getCurp());
@@ -104,6 +106,7 @@ public class ObjetoNegocioPersona implements IObjetoNegocioPersona {
      * @param persona persona
      * @return personaDTO
      */
+    @Override
     public PersonaDTO convertirEntidadADTOCURP(Persona persona) {
         PersonaDTO personaDTO = new PersonaDTO();
         personaDTO.setCurp(persona.getCurp());
@@ -115,6 +118,7 @@ public class ObjetoNegocioPersona implements IObjetoNegocioPersona {
      * @param persona persona
      * @return personaDTO
      */
+    @Override
    public PersonaDTO convertirEntidadADTO(Persona persona) {
         ObjetoNegocioTarjeta ont = new ObjetoNegocioTarjeta();
         PersonaDTO personaDTO = new PersonaDTO();

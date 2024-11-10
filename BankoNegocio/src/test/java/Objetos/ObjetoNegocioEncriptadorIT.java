@@ -51,7 +51,7 @@ public class ObjetoNegocioEncriptadorIT {
         String result;
         
         //act
-        result = encrip.getAESDecrypt(cad);
+        result = encrip.getAESDecrypt(encrip.getAES(cad));
         
         //assert
         

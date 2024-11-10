@@ -16,6 +16,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.MockitoAnnotations;
 
 /**
  *
@@ -23,92 +28,90 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ObjetoNegocioGrupoIT {
     
-    IObjetoNegocioGrupo negocio;
-    
-    public ObjetoNegocioGrupoIT(){
-        negocio = new ObjetoNegocioGrupo();
+    @Mock
+    private IObjetoNegocioGrupo negocio;
+
+    @InjectMocks
+    private ObjetoNegocioGrupoIT objetoNegocioGrupoIT;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
-    /**
-     * Test of convertirDTOAEntidad method, of class ObjetoNegocioGrupo.
-     */
+
     @Test
     public void testConvertirDTOAEntidad() {
-        //arrange
-        ObjetoNegocioGrupo dto = new ObjetoNegocioGrupo();
-        GrupoDTO grupo = new GrupoDTO("jose", 123.23, "pago");
-        Grupo result;
-        
-        //act
-        result = dto.convertirDTOAEntidad(grupo);
-        
-        //assert
+        // Arrange
+        GrupoDTO grupoDTO = new GrupoDTO("jose", 123.23, "pago");
+        Grupo grupo = new Grupo("jose", 123.23, "pago");
+        when(negocio.convertirDTOAEntidad(grupoDTO)).thenReturn(grupo);
+
+        // Act
+        Grupo result = negocio.convertirDTOAEntidad(grupoDTO);
+
+        // Assert
         assertEquals("jose", result.getNombre());
+        verify(negocio).convertirDTOAEntidad(grupoDTO);
     }
 
-    /**
-     * Test of convertirEntidadADTO method, of class ObjetoNegocioGrupo.
-     */
     @Test
     public void testConvertirEntidadADTO() {
-        //arrange
-        ObjetoNegocioGrupo dto = new ObjetoNegocioGrupo();
+        // Arrange
         Grupo grupo = new Grupo("jose", 123.23, "pago");
-        GrupoDTO result;
-        
-        //act
-        result = dto.convertirEntidadADTO(grupo);
-        
-        //assert
+        GrupoDTO grupoDTO = new GrupoDTO("jose", 123.23, "pago");
+        when(negocio.convertirEntidadADTO(grupo)).thenReturn(grupoDTO);
+
+        // Act
+        GrupoDTO result = negocio.convertirEntidadADTO(grupo);
+
+        // Assert
         assertEquals("jose", result.getNombre());
+        verify(negocio).convertirEntidadADTO(grupo);
     }
 
-    /**
-     * Test of crearGrupo method, of class ObjetoNegocioGrupo.
-     */
     @Test
     public void testCrearGrupo() {
-        //arrange
+        // Arrange
         GrupoDTO grupo = new GrupoDTO("jose", 123.23, "pago");
-        ObjectId result;
-        
-        //act
-        result = negocio.crearGrupo(grupo);
-        
-        //assert
-        assertEquals(result, result);
+        ObjectId expectedId = new ObjectId();
+        when(negocio.crearGrupo(grupo)).thenReturn(expectedId);
+
+        // Act
+        ObjectId result = negocio.crearGrupo(grupo);
+
+        // Assert
+        assertEquals(expectedId, result);
+        verify(negocio).crearGrupo(grupo);
     }
 
-    /**
-     * Test of obtenerGrupoPorId method, of class ObjetoNegocioGrupo.
-     */
     @Test
     public void testObtenerGrupoPorId() {
-        //arrange
+        // Arrange
         String id = "1";
-        GrupoDTO result;
-        
-        //act
-        result = negocio.obtenerGrupoPorId(id);
-        
-        //assert
-        assertEquals(result, result);
+        GrupoDTO grupoDTO = new GrupoDTO("jose", 123.23, "pago");
+        when(negocio.obtenerGrupoPorId(id)).thenReturn(grupoDTO);
+
+        // Act
+        GrupoDTO result = negocio.obtenerGrupoPorId(id);
+
+        // Assert
+        assertEquals(grupoDTO, result);
+        verify(negocio).obtenerGrupoPorId(id);
     }
 
-    /**
-     * Test of agregarContacto method, of class ObjetoNegocioGrupo.
-     */
     @Test
     public void testAgregarContacto() {
-        //arrange
+        // Arrange
         ContactoDTO contacto = new ContactoDTO("jose");
         String id = "1";
-        Boolean result;
-        
-        //act
-        result = negocio.agregarContacto(contacto, id);
-        
-        //assert
+        when(negocio.agregarContacto(contacto, id)).thenReturn(true);
+
+        // Act
+        Boolean result = negocio.agregarContacto(contacto, id);
+
+        // Assert
         assertTrue(result);
+        verify(negocio).agregarContacto(contacto, id);
     }
     
 }

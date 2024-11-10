@@ -6,6 +6,7 @@ package Objetos.Interfaces;
 
 import DTOs.ContactoDTO;
 import DTOs.PersonaDTO;
+import entidades.Contacto;
 import java.util.List;
 
 /**
@@ -53,4 +54,6 @@ public interface IObjetoNegocioContacto {
      * @return  contacto s
      */
     public ContactoDTO obtenerContactoDTOPersona(PersonaDTO personaDTO, ContactoDTO contactoDTO);
+    public Contacto convertirDTOAEntidad(ContactoDTO contactoDTO);
+    public ContactoDTO convertirEntidadADTO(Contacto contacto);
 }
