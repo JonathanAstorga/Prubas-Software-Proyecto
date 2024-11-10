@@ -56,6 +56,12 @@ public class TransferenciaDAO implements ITransferenciaDAO {
         coleccionTransferencia = Conexion.getDatabase().getCollection("Transferencias", Transferencia.class);
         td = new TarjetaDAO();
     }
+    
+    public TransferenciaDAO(MongoCollection transferencia, MongoCollection personas, TarjetaDAO tarjeta) {
+        coleccionPersonas = personas;
+        coleccionTransferencia = transferencia;
+        td = tarjeta;
+    }
 
     /**
      * Realiza una transferencia financiera entre dos cuentas.
@@ -105,13 +111,12 @@ public class TransferenciaDAO implements ITransferenciaDAO {
                     Updates.set("listaTarjetas.$", tarjetaDestinatario)
             );
 
-            // Guardar la transferencia
+//             Guardar la transferencia
             transferencia.setFechaMovimiento(new Date());
             transferencia.setNumeroCuentaDestinatario(enc.getAES(transferencia.getNumeroCuentaDestinatario()));
             transferencia.setNumeroCuentaPropietario(enc.getAES(transferencia.getNumeroCuentaPropietario()));
-            MongoCollection<Transferencia> coleccionTransferencias = Conexion.getDatabase().getCollection("Transferencias", Transferencia.class);
-
-            coleccionTransferencias.insertOne(transferencia);
+            
+            coleccionTransferencia.insertOne(transferencia);
 
             return true;
         } catch (Exception e) {
