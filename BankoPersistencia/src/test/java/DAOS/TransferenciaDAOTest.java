@@ -5,6 +5,7 @@
 package DAOS;
 
 import Conexion.Conexion;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.client.result.UpdateResult;
@@ -12,6 +13,7 @@ import entidades.Persona;
 import entidades.Tarjeta;
 import entidades.Transferencia;
 import interfaces.daos.ITarjetaDAO;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.bson.conversions.Bson;
@@ -43,6 +45,9 @@ public class TransferenciaDAOTest {
     
     @Mock
     InsertOneResult insertOneResult;
+    
+    @Mock
+    FindIterable findIterable;
 
     @InjectMocks
     TransferenciaDAO transferenciaDao;
@@ -357,16 +362,38 @@ public class TransferenciaDAOTest {
      */
     @Test // #19
     public void testObtenerTransferenciasEgreso() {
+        // Arrange
         System.out.println("obtenerTransferenciasEgreso");
-        Tarjeta tarjeta = null;
-        Date fechaInicio = null;
-        Date fechaFin = null;
-        TransferenciaDAO instance = new TransferenciaDAO();
-        List<Transferencia> expResult = null;
-        List<Transferencia> result = instance.obtenerTransferenciasEgreso(tarjeta, fechaInicio, fechaFin);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Tarjeta tarjeta= new Tarjeta("10");
+        Date fechaInicio = new Date();
+        Date fechaFin = new Date();
+        Transferencia transferencia1 = new Transferencia("1", tarjeta.getNumeroCuenta(),
+                20D, "Nomas",
+                fechaInicio);
+        Transferencia transferencia2 = new Transferencia("2", tarjeta.getNumeroCuenta(),
+                20D, "Te lo devuelvo",
+                fechaInicio);
+        List<Transferencia> listaEsperada = new ArrayList<>();
+        listaEsperada.add(transferencia1);
+        listaEsperada.add(transferencia2);
+        
+        Tarjeta tarjetaEspia = Mockito.spy(tarjeta);
+        
+        Mockito.when(transferenciaMock.find(Mockito.any(Bson.class)))
+                .thenReturn(findIterable);
+        
+        Mockito.when(findIterable.into(Mockito.any(List.class)))
+                .thenReturn(listaEsperada);
+        
+        // Act
+        List<Transferencia> resultado = transferenciaDao.obtenerTransferenciasEgreso(tarjetaEspia, fechaInicio, fechaFin);
+        
+        // Assert
+        assertEquals(listaEsperada, resultado);
+        Mockito.verify(tarjetaEspia, Mockito.times(2)).getNumeroCuenta();
+        Mockito.verify(tarjetaEspia, Mockito.times(1)).
+                setNumeroCuenta(Mockito.any(String.class));
+        
     }
 
     /**
@@ -374,16 +401,35 @@ public class TransferenciaDAOTest {
      */
     @Test // #20
     public void testObtenerTransferenciasIngreso() {
+        // Arrange
         System.out.println("obtenerTransferenciasIngreso");
-        Tarjeta tarjeta = null;
-        Date fechaInicio = null;
-        Date fechaFin = null;
-        TransferenciaDAO instance = new TransferenciaDAO();
-        List<Transferencia> expResult = null;
-        List<Transferencia> result = instance.obtenerTransferenciasIngreso(tarjeta, fechaInicio, fechaFin);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Tarjeta tarjeta= new Tarjeta("9");
+        Date fechaInicio = new Date();
+        Date fechaFin = new Date();
+        Transferencia transferencia1 = new Transferencia(tarjeta.getNumeroCuenta(), "20", 20D, "Nomas",
+                fechaInicio);
+        Transferencia transferencia2 = new Transferencia(tarjeta.getNumeroCuenta(), "10", 20D, "Te lo devuelvo",
+                fechaInicio);
+        List<Transferencia> listaEsperada = new ArrayList<>();
+        listaEsperada.add(transferencia1);
+        listaEsperada.add(transferencia2);
+        
+        Tarjeta tarjetaEspia = Mockito.spy(tarjeta);
+        
+        Mockito.when(transferenciaMock.find(Mockito.any(Bson.class)))
+                .thenReturn(findIterable);
+        
+        Mockito.when(findIterable.into(Mockito.any(List.class)))
+                .thenReturn(listaEsperada);
+        
+        // Act
+        List<Transferencia> resultado = transferenciaDao.obtenerTransferenciasEgreso(tarjetaEspia, fechaInicio, fechaFin);
+        
+        // Assert
+        assertEquals(listaEsperada, resultado);
+        Mockito.verify(tarjetaEspia, Mockito.times(2)).getNumeroCuenta();
+        Mockito.verify(tarjetaEspia, Mockito.times(1)).
+                setNumeroCuenta(Mockito.any(String.class));
     }
 
     /**

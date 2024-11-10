@@ -140,7 +140,7 @@ public class TransferenciaDAO implements ITransferenciaDAO {
     @Override
     public List<Transferencia> obtenerTransferenciasEgreso(Tarjeta tarjeta, Date fechaInicio, Date fechaFin) {
         tarjeta.setNumeroCuenta(enc.getAES(tarjeta.getNumeroCuenta()));
-        MongoCollection<Transferencia> coleccionTransferencias = Conexion.getDatabase().getCollection("Transferencias", Transferencia.class);
+        MongoCollection<Transferencia> coleccionTransferencias = coleccionTransferencia;
 
         Date fechaI = new Date(fechaInicio.getTime());
         Date fechaF = new Date(fechaFin.getTime());
@@ -183,7 +183,7 @@ public class TransferenciaDAO implements ITransferenciaDAO {
     @Override
     public List<Transferencia> obtenerTransferenciasIngreso(Tarjeta tarjeta, Date fechaInicio, Date fechaFin) {
         tarjeta.setNumeroCuenta(enc.getAES(tarjeta.getNumeroCuenta()));
-        MongoCollection<Transferencia> coleccionTransferencias = Conexion.getDatabase().getCollection("Transferencias", Transferencia.class);
+        MongoCollection<Transferencia> coleccionTransferencias = coleccionTransferencia;
 
         Date fechaI = new Date(fechaInicio.getTime());
         Date fechaF = new Date(fechaFin.getTime());
