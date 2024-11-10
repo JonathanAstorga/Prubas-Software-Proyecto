@@ -75,6 +75,7 @@ public class TransferenciaDAO implements ITransferenciaDAO {
         try {
 
             if (transferencia.getNumeroCuentaDestinatario().equals(transferencia.getNumeroCuentaPropietario())) {
+                System.out.println("El destinatario y el propietario son los mismos");
                 return false;
             }
 
@@ -85,10 +86,12 @@ public class TransferenciaDAO implements ITransferenciaDAO {
             Persona personaDestinatario = td.obtenerPersonaDeTarjeta(tarjetaDestinatario);
 
             if (personaRemitente == null || personaDestinatario == null) {
+                System.out.println("Remitente o Destinatario Nulo");
                 return false;
             }
 
             if (tarjetaPropietario == null || tarjetaPropietario.getSaldo() < transferencia.getImporte()) {
+                System.out.println("TarjetaPropietario nula o el saldo no es suficiente para hacer la transferencia.");
                 return false;
             }
 

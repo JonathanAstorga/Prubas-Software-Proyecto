@@ -58,7 +58,7 @@ public class ContactoDAOTest {
     } 
     
 
-    @Test
+    @Test // #1
     public void testAgregar_Boolean_ReturnSuccess() {
         //arrange
         System.out.println("Agregar Contacto en base de datos.");
@@ -86,7 +86,7 @@ public class ContactoDAOTest {
         assertTrue(resultado);
     }
 
-    @Test
+    @Test // #2
     public void testAgregar_ErrorAlAñadir_ReturnSuccess() {
         //arrange
         System.out.println("Agregar Contacto en base de datos.");
@@ -111,7 +111,7 @@ public class ContactoDAOTest {
     /**
      * Test of eliminar method, of class ContactoDAO.
      */
-    @Test
+    @Test // #3
     public void testEliminar_Boolean_ReturnSuccess() {
         //arrange
         System.out.println("Eliminar Contacto en base de datos.");
@@ -129,7 +129,7 @@ public class ContactoDAOTest {
         assertFalse(resultado);
     }
 
-    @Test
+    @Test // #4
     public void testEliminar_ErrorAlEliminar_ReturnSuccess() {
         //arrange
         System.out.println("Eliminar Contacto en base de datos.");
@@ -147,7 +147,7 @@ public class ContactoDAOTest {
     /**
      * Test of actualizar method, of class ContactoDAO.
      */
-    @Test
+    @Test // #5
     public void testActualizar_Boolean_ReturnSuccess() {
         //arrange
         System.out.println("Actualizar Contacto en base de datos.");
@@ -166,7 +166,7 @@ public class ContactoDAOTest {
         assertTrue(resultado);
     }
 
-    @Test
+    @Test // #6
     public void testActualizar_ErrorAlActualizar_ReturnSuccess() {
         //arrange
         System.out.println("Actualizar Contacto en base de datos.");
@@ -185,7 +185,7 @@ public class ContactoDAOTest {
     /**
      * Test of obtenerContactosPersona method, of class ContactoDAO.
      */
-    @Test
+    @Test // #7
     public void testObtenerContactosPersona_ListaDeContactos_ReturnSuccess() {
         //arrange
         System.out.println("obtenerContactosPersona");
@@ -200,7 +200,7 @@ public class ContactoDAOTest {
         assertEquals(esperado, resultado);
     }
 
-    @Test
+    @Test // #8
     public void testObtenerContactosPersona_ErrorListaDeContactos_ReturnSuccess() {
         //arrange
         System.out.println("obtenerContactosPersona");
@@ -218,7 +218,7 @@ public class ContactoDAOTest {
     /**
      * Test of obtenerContactoPersona method, of class ContactoDAO.
      */
-    @Test
+    @Test // #9
     public void testObtenerContactoPersona_Contacto_ReturnSuccess() {
         //arrange
         System.out.println("obtenerContactoPersona");
@@ -233,7 +233,7 @@ public class ContactoDAOTest {
         assertEquals(esperado, resultado);
     }
 
-    @Test
+    @Test // #10
     public void testObtenerContactoPersona_ErrorAlObtenerContacto_ReturnSuccess() {
         //arrange
         System.out.println("obtenerContactoPersona");
@@ -251,7 +251,7 @@ public class ContactoDAOTest {
     /**
      * Test of validaContactoPersona method, of class ContactoDAO.
      */
-    @Test
+    @Test // #11
     public void testValidaContactoPersona_Boolean_ReturnSuccess() {
         //arrange
         System.out.println("validaContactoPersona");
@@ -266,7 +266,7 @@ public class ContactoDAOTest {
 
     }
 
-    @Test
+    @Test // #12
     public void testValidaContactoPersona_NoConciden_ReturnSuccess() {
         //arrange
         System.out.println("validaContactoPersona");
