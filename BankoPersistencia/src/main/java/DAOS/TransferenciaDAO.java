@@ -249,7 +249,7 @@ public class TransferenciaDAO implements ITransferenciaDAO {
     @Override
     public List<Transferencia> obtenerTransferenciasSinFecha(Tarjeta tarjeta) {
         tarjeta.setNumeroCuenta(enc.getAES(tarjeta.getNumeroCuenta()));
-        MongoCollection<Transferencia> coleccionTransferencias = Conexion.getDatabase().getCollection("Transferencias", Transferencia.class);
+        MongoCollection<Transferencia> coleccionTransferencias = coleccionTransferencia;
 
         Document filtroTarjeta = new Document("$or", Arrays.asList(
                 new Document("numeroCuentaPropietario", tarjeta.getNumeroCuenta()),
