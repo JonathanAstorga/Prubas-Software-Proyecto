@@ -40,7 +40,7 @@ public class ObjetoNegocioGrupoIT {
     }
 
     @Test
-    public void testConvertirDTOAEntidad() {
+    public void testConvertirDTOAEntidad_Entidad_ReturnSucces() {
         // Arrange
         GrupoDTO grupoDTO = new GrupoDTO("jose", 123.23, "pago");
         Grupo grupo = new Grupo("jose", 123.23, "pago");
@@ -55,7 +55,7 @@ public class ObjetoNegocioGrupoIT {
     }
 
     @Test
-    public void testConvertirEntidadADTO() {
+    public void testConvertirEntidadADTO_DTO_ReturnSucces() {
         // Arrange
         Grupo grupo = new Grupo("jose", 123.23, "pago");
         GrupoDTO grupoDTO = new GrupoDTO("jose", 123.23, "pago");
@@ -70,7 +70,7 @@ public class ObjetoNegocioGrupoIT {
     }
 
     @Test
-    public void testCrearGrupo() {
+    public void testCrearGrupo_Grupo_ReturnSucces() {
         // Arrange
         GrupoDTO grupo = new GrupoDTO("jose", 123.23, "pago");
         ObjectId expectedId = new ObjectId();
@@ -85,7 +85,7 @@ public class ObjetoNegocioGrupoIT {
     }
 
     @Test
-    public void testObtenerGrupoPorId() {
+    public void testObtenerGrupoPorId_Grupo_ReturnSucces() {
         // Arrange
         String id = "1";
         GrupoDTO grupoDTO = new GrupoDTO("jose", 123.23, "pago");
@@ -100,7 +100,7 @@ public class ObjetoNegocioGrupoIT {
     }
 
     @Test
-    public void testAgregarContacto() {
+    public void testAgregarContacto_Contacto_ReturnSucces() {
         // Arrange
         ContactoDTO contacto = new ContactoDTO("jose");
         String id = "1";

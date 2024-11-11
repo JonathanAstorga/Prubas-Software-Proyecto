@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import DAOS.PersonaDAO;
 import DTOs.ContactoDTO;
 import DTOs.PersonaDTO;
 import Objetos.Interfaces.IObjetoNegocioPersona;
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
@@ -30,6 +32,8 @@ public class ObjetoNegocioPersonaIT {
     
     @Mock
     private IObjetoNegocioPersona negocio;
+    @Mock
+    private PersonaDAO persona;
 
     @InjectMocks
     private ObjetoNegocioPersona objetoNegocioPersona;
@@ -40,7 +44,7 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testConvertirDTOAEntidad_PersonaDTO() {
+    public void testConvertirDTOAEntidad_PersonaDTO_ReturnSucces() {
         // arrange
         PersonaDTO persona = new PersonaDTO("123");
         Persona expected = new Persona("123");
@@ -54,7 +58,7 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testConvertirEntidadADTOCURP() {
+    public void testConvertirEntidadADTOCURP_DTO_ReturnSucces() {
         // arrange
         Persona persona = new Persona("123");
         PersonaDTO expected = new PersonaDTO("123");
@@ -68,7 +72,7 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testConvertirEntidadADTO_Persona() {
+    public void testConvertirEntidadADTO_Persona_ReturnSucces() {
         // arrange
         Persona persona = new Persona("123");
         PersonaDTO expected = new PersonaDTO("123");
@@ -82,7 +86,7 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testRegistrar() {
+    public void testRegistrar_Boolean_ReturnSucces() {
         // arrange
         PersonaDTO persona = new PersonaDTO("123");
         when(negocio.registrar(persona)).thenReturn(true);
@@ -95,7 +99,7 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testPersonaRegistrada() {
+    public void testPersonaRegistrada_Persona_ReturnSucces() {
         // arrange
         PersonaDTO persona = new PersonaDTO("123");
         when(negocio.personaRegistrada(persona)).thenReturn(true);
@@ -108,20 +112,22 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testObtenerPersonaDTOPorCurp() {
+    public void testObtenerPersonaDTOPorCurp_Persona_ReturnSucces() {
         // arrange
-        PersonaDTO persona = new PersonaDTO("123");
-        when(negocio.obtenerPersonaDTOPorCurp(persona)).thenReturn(persona);
+        PersonaDTO persona2 = new PersonaDTO("123");
+        Persona persona22 = new Persona("123");
+        when(persona.obtenerPersonaPorCurp(Mockito.any(Persona.class))).thenReturn(persona22);
+        
 
         // act
-        PersonaDTO result = objetoNegocioPersona.obtenerPersonaDTOPorCurp(persona);
+        PersonaDTO result = objetoNegocioPersona.obtenerPersonaDTOPorCurp(persona2);
 
         // assert
-        assertEquals("123", result.getCurp());
+        assertEquals(persona2, result);
     }
 
     @Test
-    public void testProcesarInicioSesion() {
+    public void testProcesarInicioSesion_Boolean_ReturnSucces() {
         // arrange
         String contra = "123";
         String user = "madero";
@@ -135,7 +141,7 @@ public class ObjetoNegocioPersonaIT {
     }
 
     @Test
-    public void testObtenerPersonaPorTelefonoYContrasena() {
+    public void testObtenerPersonaPorTelefonoYContrasena_Persona_ReturnSucces() {
         // arrange
         String contra = "123";
         String telefono = "6441";
@@ -152,7 +158,7 @@ public class ObjetoNegocioPersonaIT {
     
 
     @Test
-    public void testInsertMasivo() {
+    public void testInsertMasivo_Boolean_ReturnSucces() {
         // arrange
         List<PersonaDTO> personas = new ArrayList<>();
         personas.add(new PersonaDTO("123"));

@@ -32,6 +32,11 @@ public class MovimientosTransferenciasSS implements IMovimientosTransferenciasSS
         this.transferencia = new ObjetoNegocioTransferencia();
 
     }
+    
+    public MovimientosTransferenciasSS(IObjetoNegocioTransferencia iObjetoNegocioTransferencia) {
+        this.transferencia = iObjetoNegocioTransferencia;
+
+    }
 
     /**
      * Retorna una lista de transferencias de egreso asociadas a una tarjeta

@@ -28,7 +28,7 @@ public class ObjetoNegocioEncriptadorIT {
      * Test of getAES method, of class ObjetoNegocioEncriptador.
      */
     @Test
-    public void testGetAES() {
+    public void testGetAES_String_ReturnSucces() {
         //arrange
         String cad = "cadena";
         String result;
@@ -45,7 +45,7 @@ public class ObjetoNegocioEncriptadorIT {
      * Test of getAESDecrypt method, of class ObjetoNegocioEncriptador.
      */
     @Test
-    public void testGetAESDecrypt() {
+    public void testGetAESDecrypt_String_ReturnSucces() {
         //arrange
         String cad = "cadena";
         String result;

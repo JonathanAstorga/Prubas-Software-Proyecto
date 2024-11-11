@@ -1,12 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: Objetos.ObjetoNegocioPersonaIT
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 31.26 s <<< FAILURE! -- in Objetos.ObjetoNegocioPersonaIT
-Objetos.ObjetoNegocioPersonaIT.testObtenerPersonaDTOPorCurp -- Time elapsed: 31.25 s <<< ERROR!
-java.lang.NullPointerException: Cannot invoke "entidades.Persona.getNombre()" because "persona" is null
-	at Objetos.ObjetoNegocioPersona.convertirEntidadADTO(ObjetoNegocioPersona.java:125)
-	at Objetos.ObjetoNegocioPersona.obtenerPersonaDTOPorCurp(ObjetoNegocioPersona.java:193)
-	at Objetos.ObjetoNegocioPersonaIT.testObtenerPersonaDTOPorCurp(ObjetoNegocioPersonaIT.java:117)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.193 s <<< FAILURE! -- in Objetos.ObjetoNegocioPersonaIT
+Objetos.ObjetoNegocioPersonaIT.testObtenerPersonaDTOPorCurp -- Time elapsed: 1.179 s <<< ERROR!
+java.lang.IllegalArgumentException: invalid hexadecimal representation of an ObjectId: [null]
+	at org.bson.types.ObjectId.parseHexString(ObjectId.java:529)
+	at org.bson.types.ObjectId.<init>(ObjectId.java:205)
+	at Objetos.ObjetoNegocioPersona.convertirEntidadADTO(ObjetoNegocioPersona.java:129)
+	at Objetos.ObjetoNegocioPersona.obtenerPersonaDTOPorCurp(ObjetoNegocioPersona.java:196)
+	at Objetos.ObjetoNegocioPersonaIT.testObtenerPersonaDTOPorCurp(ObjetoNegocioPersonaIT.java:123)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:686)
