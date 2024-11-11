@@ -23,6 +23,7 @@ public class MostrarTarjetasSS implements IMostrarTarjetasSS {
        tarjeta = new ObjetoNegocioTarjeta();
     }
 
+
     @Override
     public List<TarjetaDTO> obtenerTarjetasDTOPersona(PersonaDTO personaDTO) {
         List<TarjetaDTO> lista = tarjeta.obtenerTarjetasDTOPersona(personaDTO);
