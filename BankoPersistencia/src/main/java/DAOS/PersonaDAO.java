@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -35,6 +36,10 @@ public class PersonaDAO implements IPersonaDAO {
 
     public PersonaDAO() {
         this.coleccionPersonas = Conexion.getDatabase().getCollection("Personas", Persona.class);
+    }
+    
+    public PersonaDAO(MongoCollection<Persona> coleccionPersonas) {
+        this.coleccionPersonas = coleccionPersonas;
     }
 
     @Override

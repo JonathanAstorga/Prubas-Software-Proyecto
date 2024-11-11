@@ -33,8 +33,6 @@ private MongoCollection<Grupo> collection;
         this.collection = collection;
     }
 
-  
-
     public GrupoDAO() {
         this.collection = Conexion.getDatabase().getCollection("Grupo", Grupo.class);
     }

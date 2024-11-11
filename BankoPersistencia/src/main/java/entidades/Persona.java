@@ -34,6 +34,12 @@ public class Persona {
         this.curp = curp;
     }
 
+    public Persona(String nombre, String apellidoP, String apellidoM) {
+        this.nombre = nombre;
+        this.apellidoP = apellidoP;
+        this.apellidoM = apellidoM;
+    }
+    
     public Persona(String nombre, String apellidoP, String apellidoM, Date fechaNac, String telefono) {
         this.nombre = nombre;
         this.apellidoP = apellidoP;

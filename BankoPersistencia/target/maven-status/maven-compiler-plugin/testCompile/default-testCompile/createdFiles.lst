@@ -1,3 +1,4 @@
-DAOS\ContactoDAOTest.class
 DAOS\GrupoDAOTest.class
 DAOS\TransferenciaDAOTest.class
+DAOS\ContactoDAOTest.class
+DAOS\PersonaDAOTest.class
