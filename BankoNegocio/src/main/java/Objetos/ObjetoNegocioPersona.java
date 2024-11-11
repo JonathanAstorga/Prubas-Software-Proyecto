@@ -42,6 +42,9 @@ public class ObjetoNegocioPersona implements IObjetoNegocioPersona {
     public ObjetoNegocioPersona() {
         this.pd = new PersonaDAO();
     }
+    public ObjetoNegocioPersona(IPersonaDAO persona){
+        this.pd = persona;
+    }
    
     /**
      * convertir DTO a entidad

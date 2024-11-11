@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" version="3.0.2" name="Objetos.ObjetoNegocioPersonaIT" time="31.265" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" version="3.0.2" name="Objetos.ObjetoNegocioPersonaIT" time="1.193" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\jl4ma\AppData\Local\Temp\surefire15660662888849413382\surefirebooter-20241109203341396_3.jar C:\Users\jl4ma\AppData\Local\Temp\surefire15660662888849413382 2024-11-09T20-33-41_247-jvmRun1 surefire-20241109203341396_1tmp surefire_0-20241109203341396_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\jl4ma\AppData\Local\Temp\surefire16075077295136370783\surefirebooter-20241110210339328_3.jar C:\Users\jl4ma\AppData\Local\Temp\surefire16075077295136370783 2024-11-10T21-03-39_219-jvmRun1 surefire-20241110210339328_1tmp surefire_0-20241110210339328_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="DummyToSkipUnitTests"/>
     <property name="surefire.test.class.path" value="C:\Users\jl4ma\OneDrive\Documentos\GitHub\Prubas-Software-Proyecto\BankoNegocio\target\test-classes;C:\Users\jl4ma\OneDrive\Documentos\GitHub\Prubas-Software-Proyecto\BankoNegocio\target\BankoNegocio-1.0-SNAPSHOT.jar;C:\Users\jl4ma\.m2\repository\com\mycompany\BankoDTOs\1.0-SNAPSHOT\BankoDTOs-1.0-SNAPSHOT.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\mongo-java-driver\3.10.1\mongo-java-driver-3.10.1.jar;C:\Users\jl4ma\.m2\repository\com\mycompany\BankoPersistencia\1.0-SNAPSHOT\BankoPersistencia-1.0-SNAPSHOT.jar;C:\Users\jl4ma\.m2\repository\com\itextpdf\itext-pdfa\5.5.13.3\itext-pdfa-5.5.13.3.jar;C:\Users\jl4ma\.m2\repository\com\itextpdf\itextpdf\5.5.13.1\itextpdf-5.5.13.1.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\jl4ma\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\mongodb-driver-sync\4.0.1\mongodb-driver-sync-4.0.1.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\bson\4.0.1\bson-4.0.1.jar;C:\Users\jl4ma\.m2\repository\org\mongodb\mongodb-driver-core\4.0.1\mongodb-driver-core-4.0.1.jar;C:\Users\jl4ma\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\jl4ma\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\jl4ma\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\jl4ma\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;C:\Users\jl4ma\.m2\repository\org\mockito\mockito-core\5.4.0\mockito-core-5.4.0.jar;C:\Users\jl4ma\.m2\repository\net\bytebuddy\byte-buddy\1.14.5\byte-buddy-1.14.5.jar;C:\Users\jl4ma\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.5\byte-buddy-agent-1.14.5.jar;C:\Users\jl4ma\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\jl4ma\AppData\Local\Temp\surefire15660662888849413382\surefirebooter-20241109203341396_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\jl4ma\AppData\Local\Temp\surefire16075077295136370783\surefirebooter-20241110210339328_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.4+8-LTS-274"/>
@@ -63,11 +63,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testObtenerPersonaDTOPorCurp" classname="Objetos.ObjetoNegocioPersonaIT" time="31.253">
-    <error message="Cannot invoke &quot;entidades.Persona.getNombre()&quot; because &quot;persona&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "entidades.Persona.getNombre()" because "persona" is null
-	at Objetos.ObjetoNegocioPersona.convertirEntidadADTO(ObjetoNegocioPersona.java:125)
-	at Objetos.ObjetoNegocioPersona.obtenerPersonaDTOPorCurp(ObjetoNegocioPersona.java:193)
-	at Objetos.ObjetoNegocioPersonaIT.testObtenerPersonaDTOPorCurp(ObjetoNegocioPersonaIT.java:117)
+  <testcase name="testObtenerPersonaDTOPorCurp" classname="Objetos.ObjetoNegocioPersonaIT" time="1.179">
+    <error message="invalid hexadecimal representation of an ObjectId: [null]" type="java.lang.IllegalArgumentException"><![CDATA[java.lang.IllegalArgumentException: invalid hexadecimal representation of an ObjectId: [null]
+	at org.bson.types.ObjectId.parseHexString(ObjectId.java:529)
+	at org.bson.types.ObjectId.<init>(ObjectId.java:205)
+	at Objetos.ObjetoNegocioPersona.convertirEntidadADTO(ObjetoNegocioPersona.java:129)
+	at Objetos.ObjetoNegocioPersona.obtenerPersonaDTOPorCurp(ObjetoNegocioPersona.java:196)
+	at Objetos.ObjetoNegocioPersonaIT.testObtenerPersonaDTOPorCurp(ObjetoNegocioPersonaIT.java:123)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:686)
@@ -134,15 +136,13 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]></error>
-    <system-out><![CDATA[com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=localhost:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: getsockopt}}]
-]]></system-out>
     <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\jl4ma\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.5\byte-buddy-agent-1.14.5.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
-nov 09, 2024 8:33:42 P. M. com.mongodb.diagnostics.logging.JULLogger log
+nov 10, 2024 9:03:40 P. M. com.mongodb.diagnostics.logging.JULLogger log
 INFO: Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-nov 09, 2024 8:33:42 P. M. com.mongodb.diagnostics.logging.JULLogger log
+nov 10, 2024 9:03:40 P. M. com.mongodb.diagnostics.logging.JULLogger log
 INFO: Exception in monitor thread while connecting to server localhost:27017
 com.mongodb.MongoSocketOpenException: Exception opening socket
 	at com.mongodb.internal.connection.SocketChannelStream.open(SocketChannelStream.java:63)
@@ -160,8 +160,6 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 	at com.mongodb.internal.connection.SocketChannelStream.open(SocketChannelStream.java:60)
 	... 3 more
 
-nov 09, 2024 8:33:42 P. M. com.mongodb.diagnostics.logging.JULLogger log
-INFO: Cluster description not yet available. Waiting for 30000 ms before timing out
 ]]></system-err>
   </testcase>
 </testsuite>

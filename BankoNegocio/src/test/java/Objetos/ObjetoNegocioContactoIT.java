@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
@@ -40,7 +40,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testConvertirDTOAEntidad() {
+    public void testConvertirDTOAEntidad_Entidad_ReturnSuccess() {
         // Arrange
         ContactoDTO contactoDTO = new ContactoDTO("jose");
         Contacto contacto = new Contacto("jose");
@@ -55,7 +55,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testConvertirEntidadADTO() {
+    public void testConvertirEntidadADTO_DTO_ReturnSucces() {
         // Arrange
         Contacto contacto = new Contacto("jose");
         ContactoDTO contactoDTO = new ContactoDTO("jose");
@@ -70,7 +70,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testAgregar() {
+    public void testAgregar_AgregarContacto_ReturnSucces() {
         // Arrange
         PersonaDTO persona = new PersonaDTO("123");
         ContactoDTO contacto = new ContactoDTO("jose");
@@ -85,7 +85,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testEliminar() {
+    public void testEliminar_Boolean_ReturnSucces() {
         // Arrange
         PersonaDTO persona = new PersonaDTO("123");
         ContactoDTO contacto = new ContactoDTO("jose");
@@ -100,7 +100,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testActualizar() {
+    public void testActualizar_Boolean_ReturnSucces() {
         // Arrange
         PersonaDTO persona = new PersonaDTO("123");
         ContactoDTO contacto = new ContactoDTO("jose");
@@ -116,7 +116,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testObtenerContactosDTOPersona() {
+    public void testObtenerContactosDTOPersona_ListaContactos_ReturnSucces() {
         // Arrange
         PersonaDTO persona = new PersonaDTO("123");
         List<ContactoDTO> prueba = new ArrayList<>();
@@ -132,7 +132,7 @@ public class ObjetoNegocioContactoIT {
     }
 
     @Test
-    public void testObtenerContactoDTOPersona() {
+    public void testObtenerContactoDTOPersona_Contacto_ReturnSucces() {
         // Arrange
         PersonaDTO persona = new PersonaDTO("123");
         ContactoDTO contacto = new ContactoDTO("jose");
