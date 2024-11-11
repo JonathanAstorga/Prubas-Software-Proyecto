@@ -57,21 +57,20 @@ public class GrupoDAOTest {
      public void TestObtenerGrupoPorID_DocumentoEncontrado_ReturnSuccess() {
           System.out.println("obtenerGrupoPorID - Documento Encontrado");
 
+          // Arrange
           ObjectId id = new ObjectId();
           Grupo grupoEsperado = new Grupo();
           grupoEsperado.setId(id);
 
-          // Configura el mock de FindIterable
           FindIterable<Grupo> mockFindIterable = Mockito.mock(FindIterable.class);
 
-          // Configura el comportamiento simulado de dbMock y FindIterable
           when(dbMock.find(any(Document.class))).thenReturn(mockFindIterable);
           when(mockFindIterable.first()).thenReturn(grupoEsperado);
 
-          // Ejecuta el método
+           // Act
           Grupo resultado = grupoDAO.obtenerGrupoPorID(id);
 
-          // Verifica el resultado
+          // Assert
           assertNotNull(resultado);
           assertEquals(grupoEsperado.getId(), resultado.getId());
      }
@@ -80,19 +79,18 @@ public class GrupoDAOTest {
      public void TestObtenerGrupoPorID_DocumentoNoEncontrado_ReturnSuccess() {
           System.out.println("obtenerGrupoPorID - Documento No Encontrado");
 
+          //Arrange
           ObjectId id = new ObjectId();
 
-          // Configura el mock de FindIterable
           FindIterable<Grupo> mockFindIterable = Mockito.mock(FindIterable.class);
 
-          // Configura el comportamiento simulado de dbMock y FindIterable
           when(dbMock.find(any(Document.class))).thenReturn(mockFindIterable);
           when(mockFindIterable.first()).thenReturn(null);
-
-          // Ejecuta el método
+          
+          // Act
           Grupo resultado = grupoDAO.obtenerGrupoPorID(id);
 
-          // Verifica el resultado
+          // Assert
           assertNull(resultado);
      }
 
@@ -103,17 +101,17 @@ public class GrupoDAOTest {
      public void TestCrearGrupo_GrupoAgregado_ReturnSuccess() {
           System.out.println("crearGrupo - Grupo Agregado Exitosamente");
 
+          //Arrange
           Grupo grupo = new Grupo();
           ObjectId idEsperado = new ObjectId();
           grupo.setId(idEsperado);
 
-          // Ejecuta el método
+          // Act
           ObjectId resultado = grupoDAO.crearGrupo(grupo);
 
-          // Verifica el resultado
+          // Assert
           assertEquals(idEsperado, resultado);
 
-          // Verifica que el método insertOne fue llamado con el grupo
           verify(dbMock).insertOne(grupo);
      }
 
@@ -124,21 +122,21 @@ public class GrupoDAOTest {
      public void TestAgregarContacto_ContactoAgregado_ReturnSuccess() {
           System.out.println("agregarContacto - Contacto Agregado Exitosamente");
 
+          //Arrange
           Contacto contacto = new Contacto();
           contacto.setNombre("Juan");
           contacto.setApellidoP("Perez");
           contacto.setApellidoM("Lopez");
 
           String idGrupo = new ObjectId().toString();
-
-          // Configura el comportamiento simulado del update
+          
           when(updateResult.getModifiedCount()).thenReturn(1L);
           when(dbMock.updateOne(any(Document.class), any(Bson.class))).thenReturn(updateResult);
 
-          // Ejecuta el método
+          // Act
           Boolean resultado = grupoDAO.agregarContacto(contacto, idGrupo);
 
-          // Verifica el resultado
+          // Assert
           assertTrue(resultado);
      }
 }
