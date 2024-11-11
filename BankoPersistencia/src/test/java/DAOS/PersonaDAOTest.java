@@ -57,7 +57,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     public void testRegistrarPersona_ReturnSuccess() {
+     public void TestRegistrar_PersonaRegistrada_ReturnSuccess() {
           // Arrange
           mockCollection = Mockito.mock(MongoCollection.class);
           insertOneResult = Mockito.mock(InsertOneResult.class);
@@ -75,7 +75,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     public void testPersonaRegistrada_PersonaExiste_ReturnFalse() {
+     public void TestPersonaRegistrada_PersonaEncontrada_ReturnSuccess() {
           // Arrange
           Persona persona = new Persona("Juan", "Pérez", "Gómez", "PEGJ900615HDFRZN00", "contraseña123", new Date(), "5512345678", new ArrayList<>());
 
@@ -93,7 +93,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     public void testPersonaRegistrada_PersonaNoExiste_ReturnFalse() {
+     public void TestPersonaRegistrada_PersonaNoEncontrada_ReturnSuccess() {
           // Arrange
           Persona persona = new Persona("Juan", "Pérez", "Gómez", "PEGJ900615HDFRZN00", "contraseña123", new Date(), "5512345678", new ArrayList<>());
 
@@ -134,7 +134,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     void testObtenerPersonaPorCurp_PersonaNoEncontrada_ReturnNull() {
+     void testObtenerPersonaPorCurp_PersonaNoEncontrada_ReturnSuccess() {
            // Arrange
           String curp = "ABCD123456";
           Persona personaMock = new Persona();
@@ -156,7 +156,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     public void testProcesarInicioSesion_CredencialesCorrectas_ReturnTrue() {
+     public void TestProcesarInicioSesion_InicioSesionExitoso_ReturnSuccess() {
           System.out.println("procesarInicioSesion - Credenciales correctas");
 
           // Arrange
@@ -178,7 +178,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     public void testProcesarInicioSesion_CredencialesIncorrectas_ReturnFalse() {
+     public void TestProcesarInicioSesion_InicioSesionErroneo_ReturnSuccess() {
           System.out.println("procesarInicioSesion - Credenciales incorrectas");
 
           // Arrange
@@ -197,7 +197,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     void testObtenerPersonaPorTelefonoYContrasena_PersonaEncontrada_ReturnSuccess() {
+     void TestObtenerPersonaPorTelefonoYContrasena_PersonaEncontrada_ReturnSuccess() {
           //Arrange
           MongoCollection<Persona> mockCollection = mock(MongoCollection.class);
 
@@ -222,7 +222,7 @@ public class PersonaDAOTest {
      }
 
      @Test
-     void testObtenerPersonaPorTelefonoYContrasena_PersonaNoEncontrada_ReturnSuccess() {
+     void TestObtenerPersonaPorTelefonoYContrasena_PersonaNoEncontrada_ReturnSuccess() {
           //Arrange
           MongoCollection<Persona> mockCollection = mock(MongoCollection.class);
 
