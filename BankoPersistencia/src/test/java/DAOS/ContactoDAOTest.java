@@ -134,6 +134,7 @@ public class ContactoDAOTest {
         //arrange
         System.out.println("Eliminar Contacto en base de datos.");
         Contacto conta = new Contacto("hola");
+        conta.setNumeroCuenta("1");
         Persona persona = new Persona("PEGJ900615HDFRZN00"); //Persona a la que se le agregara el contacto
         
         //act
@@ -171,12 +172,11 @@ public class ContactoDAOTest {
         //arrange
         System.out.println("Actualizar Contacto en base de datos.");
         Contacto conta = new Contacto("Pablo");
-        Contacto contaNuevo = new Contacto("Pepe");
+        Contacto contaNuevo = new Contacto();
         Persona persona = new Persona("PEGJ900615HDFRZN00"); //Persona a la que se le agregara el contacto
-        Persona persona1 = pDAO.obtenerPersonaPorCurp(persona); //Persona a la que se le agregara el contacto
 
         //act
-        boolean resultado = contactoDAO.actualizar(persona1, conta, contaNuevo);
+        boolean resultado = contactoDAO.actualizar(persona, conta, contaNuevo);
 
         //assert
         assertFalse(resultado);
@@ -213,6 +213,7 @@ public class ContactoDAOTest {
 
         //assert
         assertNotEquals(esperado, resultado);
+        assertNull(resultado);
     }
 
     /**
@@ -242,10 +243,11 @@ public class ContactoDAOTest {
         Contacto esperado = persona1.getListaContactos().getFirst();
 
         //act
-        Contacto resultado = contactoDAO.obtenerContactoPersona(persona1, persona1.getListaContactos().getLast());
+        Contacto resultado = contactoDAO.obtenerContactoPersona(persona, esperado);
 
         //assert
         assertNotEquals(esperado, resultado);
+        assertNull(resultado);
     }
 
     /**
