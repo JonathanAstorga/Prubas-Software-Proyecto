@@ -19,6 +19,7 @@ import java.util.List;
 import org.bson.conversions.Bson;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -53,6 +54,7 @@ public class TransferenciaDAOTest {
     TransferenciaDAO transferenciaDao;
 
     public TransferenciaDAOTest() {
+        
     }
 
     @BeforeEach
@@ -364,14 +366,12 @@ public class TransferenciaDAOTest {
     public void testObtenerTransferenciasEgreso_List_ReturnSuccess() {
         // Arrange
         System.out.println("obtenerTransferenciasEgreso");
-        Tarjeta tarjeta = new Tarjeta("10");
+        Tarjeta tarjeta = new Tarjeta("9");
         Date fechaInicio = new Date();
         Date fechaFin = new Date();
-        Transferencia transferencia1 = new Transferencia("1", tarjeta.getNumeroCuenta(),
-                20D, "Nomas",
+        Transferencia transferencia1 = new Transferencia( "20", tarjeta.getNumeroCuenta(), 20D, "Nomas",
                 fechaInicio);
-        Transferencia transferencia2 = new Transferencia("2", tarjeta.getNumeroCuenta(),
-                20D, "Te lo devuelvo",
+        Transferencia transferencia2 = new Transferencia( "10", tarjeta.getNumeroCuenta(), 20D, "Te lo devuelvo",
                 fechaInicio);
         List<Transferencia> listaEsperada = new ArrayList<>();
         listaEsperada.add(transferencia1);
@@ -423,7 +423,7 @@ public class TransferenciaDAOTest {
                 .thenReturn(listaEsperada);
 
         // Act
-        List<Transferencia> resultado = transferenciaDao.obtenerTransferenciasEgreso(tarjetaEspia, fechaInicio, fechaFin);
+        List<Transferencia> resultado = transferenciaDao.obtenerTransferenciasIngreso(tarjetaEspia, fechaInicio, fechaFin);
 
         // Assert
         assertEquals(listaEsperada, resultado);
@@ -537,7 +537,7 @@ public class TransferenciaDAOTest {
      * Test of ingresosDelDia method, of class TransferenciaDAO.
      */
     @Test // #23
-    public void testIngresosDelDia_Boolean_ReturnSuccess() {
+    public void testIngresosDelDia_Double_ReturnSuccess() {
         // Arrange
         System.out.println("ingresosDelDia");
         
@@ -603,7 +603,7 @@ public class TransferenciaDAOTest {
      * Test of egresosDelDia method, of class TransferenciaDAO.
      */
     @Test // #25
-    public void testEgresosDelDia_Boolean_ReturnSuccess() {
+    public void testEgresosDelDia_Double_ReturnSuccess() {
         // Arrange
         System.out.println("egresosDelDia");
         
