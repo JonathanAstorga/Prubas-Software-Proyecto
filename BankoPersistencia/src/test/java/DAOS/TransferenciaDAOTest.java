@@ -54,7 +54,6 @@ public class TransferenciaDAOTest {
     TransferenciaDAO transferenciaDao;
 
     public TransferenciaDAOTest() {
-        
     }
 
     @BeforeEach
