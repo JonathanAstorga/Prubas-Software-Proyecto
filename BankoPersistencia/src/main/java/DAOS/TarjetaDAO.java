@@ -34,6 +34,10 @@ public class TarjetaDAO implements ITarjetaDAO {
         this.coleccionPersonas = Conexion.getDatabase().getCollection("Personas", Persona.class);
     }
 
+     TarjetaDAO(MongoCollection<Persona> mockCollection) {
+          this.coleccionPersonas = mockCollection;
+     }
+
     // Diego Alcantar
     @Override
     public List<Tarjeta> obtenerTarjetasPersona(Persona persona) {

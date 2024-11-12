@@ -4,123 +4,245 @@
  */
 package DAOS;
 
+import Conexion.Conexion;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.client.result.InsertOneResult;
+import encriptacion.Encriptador;
 import entidades.Persona;
-import java.util.List;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import org.mockito.MockitoAnnotations;
 
-/**
- *
- * @author favel
- */
 public class PersonaDAOTest {
-     
-     public PersonaDAOTest() {
+
+     @Mock
+     private MongoCollection<Persona> mockCollection;
+
+     @Mock
+     private InsertOneResult insertOneResult;
+
+     @Mock
+     private MongoCursor<Persona> mockCursor;
+
+     @InjectMocks
+     private PersonaDAO personaDAO;
+
+     private Encriptador encriptadorMock;
+
+     @BeforeEach
+     public void setUp() {
+          mockCollection = Mockito.mock(MongoCollection.class);
+          personaDAO = new PersonaDAO(mockCollection);
+          encriptadorMock = Mockito.mock(Encriptador.class);
      }
 
-     /**
-      * Test of registrar method, of class PersonaDAO.
-      */
      @Test
-     public void testRegistrar() {
-          System.out.println("registrar");
-          Persona persona = null;
-          PersonaDAO instance = new PersonaDAO();
-          Boolean expResult = null;
-          Boolean result = instance.registrar(persona);
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+     public void TestRegistrar_PersonaRegistrada_ReturnSuccess() {
+          // Arrange
+          mockCollection = Mockito.mock(MongoCollection.class);
+          insertOneResult = Mockito.mock(InsertOneResult.class);
+
+          when(mockCollection.insertOne(any(Persona.class))).thenReturn(insertOneResult);
+          when(insertOneResult.wasAcknowledged()).thenReturn(true);
+
+          personaDAO = new PersonaDAO(mockCollection);
+
+          // Act
+          boolean result = personaDAO.registrar(new Persona("Nombre", "Apellido", "Email"));
+
+          // Assert
+          assertNotNull(result, "El registro de la persona debería ser exitoso.");
      }
 
-     /**
-      * Test of personaRegistrada method, of class PersonaDAO.
-      */
      @Test
-     public void testPersonaRegistrada() {
-          System.out.println("personaRegistrada");
-          Persona persona = null;
-          PersonaDAO instance = new PersonaDAO();
-          boolean expResult = false;
-          boolean result = instance.personaRegistrada(persona);
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+     public void TestPersonaRegistrada_PersonaEncontrada_ReturnSuccess() {
+          // Arrange
+          Persona persona = new Persona("Juan", "Pérez", "Gómez", "PEGJ900615HDFRZN00", "contraseña123", new Date(), "5512345678", new ArrayList<>());
+
+          FindIterable<Persona> mockFindIterable = mock(FindIterable.class);
+
+          when(mockFindIterable.first()).thenReturn(persona);
+
+          when(mockCollection.find(eq("_id", persona.getId()))).thenReturn(mockFindIterable);
+
+          // Act
+          Boolean result = personaDAO.personaRegistrada(persona);
+
+          // Assert
+          assertTrue(result);
      }
 
-     /**
-      * Test of obtenerPersonaPorCurp method, of class PersonaDAO.
-      */
      @Test
-     public void testObtenerPersonaPorCurp() {
-          System.out.println("obtenerPersonaPorCurp");
-          Persona persona = null;
-          PersonaDAO instance = new PersonaDAO();
-          Persona expResult = null;
-          Persona result = instance.obtenerPersonaPorCurp(persona);
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+     public void TestPersonaRegistrada_PersonaNoEncontrada_ReturnSuccess() {
+          // Arrange
+          Persona persona = new Persona("Juan", "Pérez", "Gómez", "PEGJ900615HDFRZN00", "contraseña123", new Date(), "5512345678", new ArrayList<>());
+
+          FindIterable<Persona> mockFindIterable = mock(FindIterable.class);
+
+          when(mockFindIterable.first()).thenReturn(null);
+
+          when(mockCollection.find(eq("_id", persona.getId()))).thenReturn(mockFindIterable);
+
+          // Act
+          Boolean result = personaDAO.personaRegistrada(persona);
+
+          // Assert
+          assertFalse(result);
      }
 
-     /**
-      * Test of obtenerTodasLasPersonas method, of class PersonaDAO.
-      */
      @Test
-     public void testObtenerTodasLasPersonas() {
-          System.out.println("obtenerTodasLasPersonas");
-          PersonaDAO instance = new PersonaDAO();
-          List<Persona> expResult = null;
-          List<Persona> result = instance.obtenerTodasLasPersonas();
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+
+     void testObtenerPersonaPorCurp_PersonaEncontrada_ReturnSuccess() {
+          // Arrange
+          String curp = "ABCD123456";
+          Persona personaMock = new Persona();
+          personaMock.setCurp(curp);
+          personaMock.setNombre("Juan");
+          personaMock.setApellidoP("Pérez");
+
+          FindIterable<Persona> findIterableMock = Mockito.mock(FindIterable.class);
+          Mockito.when(mockCollection.find(Mockito.any(Bson.class))).thenReturn(findIterableMock);
+          Mockito.when(findIterableMock.first()).thenReturn(personaMock);
+
+          // Act
+          PersonaDAO personaDAO = new PersonaDAO(mockCollection);
+
+          Persona persona = personaDAO.obtenerPersonaPorCurp(personaMock);
+
+          // Assert
+          assertNotNull(persona);
      }
 
-     /**
-      * Test of procesarInicioSesion method, of class PersonaDAO.
-      */
      @Test
-     public void testProcesarInicioSesion() {
-          System.out.println("procesarInicioSesion");
-          String telefono = "";
-          String contra = "";
-          PersonaDAO instance = new PersonaDAO();
-          Boolean expResult = null;
-          Boolean result = instance.procesarInicioSesion(telefono, contra);
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+     void testObtenerPersonaPorCurp_PersonaNoEncontrada_ReturnSuccess() {
+           // Arrange
+          String curp = "ABCD123456";
+          Persona personaMock = new Persona();
+          personaMock.setCurp(curp);
+          personaMock.setNombre("Juan");
+          personaMock.setApellidoP("Pérez");
+
+          FindIterable<Persona> findIterableMock = Mockito.mock(FindIterable.class);
+          Mockito.when(mockCollection.find(Mockito.any(Bson.class))).thenReturn(findIterableMock);
+          Mockito.when(findIterableMock.first()).thenReturn(personaMock);
+
+          PersonaDAO personaDAO = new PersonaDAO(mockCollection);
+
+          //Act
+          Persona persona = personaDAO.obtenerPersonaPorCurp(personaMock);
+
+          //Assert
+          assertNotNull(persona);
      }
 
-     /**
-      * Test of obtenerPersonaPorTelefonoYContrasena method, of class PersonaDAO.
-      */
      @Test
-     public void testObtenerPersonaPorTelefonoYContrasena() {
-          System.out.println("obtenerPersonaPorTelefonoYContrasena");
-          String telefono = "";
-          String contra = "";
-          PersonaDAO instance = new PersonaDAO();
-          Persona expResult = null;
-          Persona result = instance.obtenerPersonaPorTelefonoYContrasena(telefono, contra);
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+     public void TestProcesarInicioSesion_InicioSesionExitoso_ReturnSuccess() {
+          System.out.println("procesarInicioSesion - Credenciales correctas");
+
+          // Arrange
+          String telefono = "5512345678";
+          String contrasena = "password";
+          Persona persona = new Persona();
+          persona.setTelefono(telefono);
+          persona.setContrasena(contrasena);
+
+          FindIterable<Persona> mockFindIterable = Mockito.mock(FindIterable.class);
+          when(mockCollection.find(any(Document.class))).thenReturn(mockFindIterable);
+          when(mockFindIterable.first()).thenReturn(persona);
+
+          // Act
+          Boolean resultado = personaDAO.procesarInicioSesion(telefono, contrasena);
+
+          // Assert
+          assertNotNull(resultado);
      }
 
-     /**
-      * Test of insertMasivo method, of class PersonaDAO.
-      */
      @Test
-     public void testInsertMasivo() {
-          System.out.println("insertMasivo");
-          PersonaDAO instance = new PersonaDAO();
-          Boolean expResult = null;
-          Boolean result = instance.insertMasivo();
-          assertEquals(expResult, result);
-          // TODO review the generated test code and remove the default call to fail.
-          fail("The test case is a prototype.");
+     public void TestProcesarInicioSesion_InicioSesionErroneo_ReturnSuccess() {
+          System.out.println("procesarInicioSesion - Credenciales incorrectas");
+
+          // Arrange
+          String telefono = "5512345678";
+          String contrasena = "wrongPassword";
+
+          FindIterable<Persona> mockFindIterable = Mockito.mock(FindIterable.class);
+          when(mockCollection.find(any(Document.class))).thenReturn(mockFindIterable);
+          when(mockFindIterable.first()).thenReturn(null);
+
+          // Act
+          Boolean resultado = personaDAO.procesarInicioSesion(telefono, contrasena);
+
+          // Assert
+          assertNotNull(resultado);
      }
-     
+
+     @Test
+     void TestObtenerPersonaPorTelefonoYContrasena_PersonaEncontrada_ReturnSuccess() {
+          //Arrange
+          MongoCollection<Persona> mockCollection = mock(MongoCollection.class);
+
+          Persona personaMock = new Persona("Juan", "Pérez", "Gómez", "PEGJ900615HDFRZN00", "contraseña123", new Date(), "5512345678", new ArrayList<>());
+
+          FindIterable<Persona> mockFindIterable = mock(FindIterable.class);
+
+          MongoCursor<Persona> cursorMock = mock(MongoCursor.class);
+
+          when(mockFindIterable.iterator()).thenReturn(cursorMock);
+
+          when(cursorMock.hasNext()).thenReturn(true);
+          when(cursorMock.next()).thenReturn(personaMock);
+
+          when(mockCollection.find(eq(Filters.eq("telefono", "5512345678")))).thenReturn(mockFindIterable);
+
+          // Act
+          Persona persona = personaDAO.obtenerPersonaPorTelefonoYContrasena("5512345678", "contraseña123");
+
+          // Assert
+          assertNull(persona);
+     }
+
+     @Test
+     void TestObtenerPersonaPorTelefonoYContrasena_PersonaNoEncontrada_ReturnSuccess() {
+          //Arrange
+          MongoCollection<Persona> mockCollection = mock(MongoCollection.class);
+
+          Persona personaMock = new Persona("Juan", "Pérez", "Gómez", "PEGJ900615HDFRZN00", "contraseña123", new Date(), "5512345678", new ArrayList<>());
+
+          FindIterable<Persona> mockFindIterable = mock(FindIterable.class);
+
+          MongoCursor<Persona> cursorMock = mock(MongoCursor.class);
+
+          when(mockFindIterable.iterator()).thenReturn(cursorMock);
+
+          when(cursorMock.hasNext()).thenReturn(true);
+          when(cursorMock.next()).thenReturn(personaMock);
+
+          when(mockCollection.find(eq(Filters.eq("telefono", "5512345678")))).thenReturn(mockFindIterable);
+
+          // Act
+          Persona persona = personaDAO.obtenerPersonaPorTelefonoYContrasena("5512345678", "contraseña123");
+
+          // Assert
+          assertNull(persona);
+     }
 }

@@ -49,8 +49,10 @@ public class MostrarContactoSS implements IMostrarContactoSS {
         }
         return null;
     }
-
-    private Boolean validaMuestra(PersonaDTO personaDTO, ContactoDTO contactoDTO) {
+    
+    
+    @Override
+    public Boolean validaMuestra(PersonaDTO personaDTO, ContactoDTO contactoDTO) {
         PersonaDTO personaBuscada = persona.obtenerPersonaDTOPorCurp(personaDTO);
 
         if (personaBuscada != null && personaBuscada.getListaContactos() != null) {

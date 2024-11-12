@@ -16,4 +16,6 @@ public interface IMostrarContactoSS {
     public List<ContactoDTO> obtenerContactosDTOPersona(PersonaDTO personaDTO);
     
     public ContactoDTO obtenerContactoDTOPersona(PersonaDTO personaDTO, ContactoDTO contactoDTO);
+    
+    public Boolean validaMuestra(PersonaDTO personaDTO, ContactoDTO contactoDTO);
 }
